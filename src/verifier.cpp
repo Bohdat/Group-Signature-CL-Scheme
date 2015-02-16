@@ -161,14 +161,14 @@ void Verifier::SetPublicKey(string PK)
 string Verifier::GetPublicKey()
 {
     string gpk;
-    gpk.append(Helper::Element_to_HEX(g)+"\n");
-    gpk.append(Helper::Element_to_HEX(gt)+"\n");
-    gpk.append(Helper::Element_to_HEX(X)+"\n");
-    gpk.append(Helper::Element_to_HEX(Y)+"\n");
-    gpk.append(Helper::Element_to_HEX(h)+"\n");
-    gpk.append(Helper::Element_to_HEX(y1)+"\n");
-    gpk.append(Helper::Element_to_HEX(y2)+"\n");
-    gpk.append(Helper::Element_to_HEX(y3)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(g)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(gt)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(X)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(Y)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(h)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(y1)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(y2)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(y3)+"\n");
     return gpk;
 }
 void Verifier::SignatureFromString(string signature, element_t c_H,element_t Sp,element_t Sm,element_t Sv,element_t T1,element_t T2,element_t T3,element_t T4,element_t T5,element_t T6,element_t T7)

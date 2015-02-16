@@ -201,7 +201,7 @@ string Member::CreateRequest()
     string request;
     request=RequestToString(hash,Sk,Pi1);
     //save ki
-    ki_hex=Helper::Element_to_HEX(ki);
+    ki_hex=Helper::Element_to_BASE_58(ki);
     //clear
     element_clear(ki);
     element_clear(Pi1);
@@ -228,8 +228,8 @@ string Member::RequestToString(string hash_string, element_t Sk, element_t Pi1)
 {
     string request;
     request=hash_string+"\n";
-    request.append(Helper::Element_to_HEX(Sk)+"\n");
-    request.append(Helper::Element_to_HEX(Pi1)+"\n");
+    request.append(Helper::Element_to_BASE_58(Sk)+"\n");
+    request.append(Helper::Element_to_BASE_58(Pi1)+"\n");
     return request;
 }
 string Member::GetKHex()
@@ -264,26 +264,26 @@ void Member::SetSecretKey(string SK)
 string Member::SignatureToString(element_t c,element_t Sp,element_t Sm,element_t Sv,element_t T1,element_t T2,element_t T3,element_t T4,element_t T5,element_t T6,element_t T7)
 {
     string signature;
-    signature.append(Helper::Element_to_HEX(c)+"\n");
-    signature.append(Helper::Element_to_HEX(Sp)+"\n");
-    signature.append(Helper::Element_to_HEX(Sm)+"\n");
-    signature.append(Helper::Element_to_HEX(Sv)+"\n");
-    signature.append(Helper::Element_to_HEX(T1)+"\n");
-    signature.append(Helper::Element_to_HEX(T2)+"\n");
-    signature.append(Helper::Element_to_HEX(T3)+"\n");
-    signature.append(Helper::Element_to_HEX(T4)+"\n");
-    signature.append(Helper::Element_to_HEX(T5)+"\n");
-    signature.append(Helper::Element_to_HEX(T6)+"\n");
-    signature.append(Helper::Element_to_HEX(T7)+"\n");
+    signature.append(Helper::Element_to_BASE_58(c)+"\n");
+    signature.append(Helper::Element_to_BASE_58(Sp)+"\n");
+    signature.append(Helper::Element_to_BASE_58(Sm)+"\n");
+    signature.append(Helper::Element_to_BASE_58(Sv)+"\n");
+    signature.append(Helper::Element_to_BASE_58(T1)+"\n");
+    signature.append(Helper::Element_to_BASE_58(T2)+"\n");
+    signature.append(Helper::Element_to_BASE_58(T3)+"\n");
+    signature.append(Helper::Element_to_BASE_58(T4)+"\n");
+    signature.append(Helper::Element_to_BASE_58(T5)+"\n");
+    signature.append(Helper::Element_to_BASE_58(T6)+"\n");
+    signature.append(Helper::Element_to_BASE_58(T7)+"\n");
     return signature;
 }
 string Member::GetSecretKey()
 {
     string SK;
-    SK.append(Helper::Element_to_HEX(ki)+"\n");
-    SK.append(Helper::Element_to_HEX(ai)+"\n");
-    SK.append(Helper::Element_to_HEX(bi)+"\n");
-    SK.append(Helper::Element_to_HEX(ci)+"\n");
+    SK.append(Helper::Element_to_BASE_58(ki)+"\n");
+    SK.append(Helper::Element_to_BASE_58(ai)+"\n");
+    SK.append(Helper::Element_to_BASE_58(bi)+"\n");
+    SK.append(Helper::Element_to_BASE_58(ci)+"\n");
     return SK;
 }
 string Member::GetPublicKey()
@@ -293,13 +293,13 @@ string Member::GetPublicKey()
 string Member::GroupPublicKeyToString(element_t g_w,element_t gt_w,element_t X_w,element_t Y_w,element_t h_w,element_t y1_w,element_t y2_w,element_t y3_w)
 {
     string gpk;
-    gpk.append(Helper::Element_to_HEX(g_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(gt_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(X_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(Y_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(h_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(y1_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(y2_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(y3_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(g_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(gt_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(X_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(Y_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(h_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(y1_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(y2_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(y3_w)+"\n");
     return gpk;
 }

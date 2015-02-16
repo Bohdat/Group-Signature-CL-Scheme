@@ -16,7 +16,6 @@ public:
     void SetPublicKey(string PK);
 private:
     void Read_Sign(element_t c,element_t Sp,element_t Sm,element_t Sv,element_t T1,element_t T2,element_t T3,element_t T4,element_t T5,element_t T6,element_t T7);
-    void Element_from_HEX(element_t elem,string elem_hex);
     void SignatureFromString(string signature, element_t c_H,element_t Sp,element_t Sm,element_t Sv,element_t T1,element_t T2,element_t T3,element_t T4,element_t T5,element_t T6,element_t T7);
     //pairing
     pairing_t pairing;

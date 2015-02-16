@@ -57,7 +57,7 @@ void Helper::TakeNextElementFromString(string & str,element_t elem)
     pos=str.find("\n");
 	tmp=str.substr(0,pos);
 	str.erase(0,pos+1);
-	Element_from_HEX(elem,tmp);
+	Element_from_BASE_58(elem,tmp);
 }
 void Helper::TakeNextLineFromString(string & str, string & line)
 {

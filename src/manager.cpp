@@ -437,39 +437,39 @@ bool Manager::Verification(string signature, char*mes, int len_mes)
 string Manager::GroupPublicKeyToString(element_t g_w,element_t gt_w,element_t X_w,element_t Y_w,element_t h_w,element_t y1_w,element_t y2_w,element_t y3_w)
 {
 	string gpk;
-    gpk.append(Helper::Element_to_HEX(g_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(gt_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(X_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(Y_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(h_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(y1_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(y2_w)+"\n");
-    gpk.append(Helper::Element_to_HEX(y3_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(g_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(gt_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(X_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(Y_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(h_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(y1_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(y2_w)+"\n");
+    gpk.append(Helper::Element_to_BASE_58(y3_w)+"\n");
     return gpk;
 }
 string Manager::SecretIssuerKeyToString(element_t x_new, element_t y_new)
 {
 	string issuer_key;
-    issuer_key.append(Helper::Element_to_HEX(x_new)+"\n");
-    issuer_key.append(Helper::Element_to_HEX(y_new)+"\n");
+    issuer_key.append(Helper::Element_to_BASE_58(x_new)+"\n");
+    issuer_key.append(Helper::Element_to_BASE_58(y_new)+"\n");
     return issuer_key;
 }
 string Manager::SecretOpenKeyToString(element_t x1_w, element_t x2_w, element_t x3_w,element_t x4_w,element_t x5_w)
 {
 	string open_key;
-    open_key.append(Helper::Element_to_HEX(x1_w)+"\n");
-    open_key.append(Helper::Element_to_HEX(x2_w)+"\n");
-    open_key.append(Helper::Element_to_HEX(x3_w)+"\n");
-    open_key.append(Helper::Element_to_HEX(x4_w)+"\n");
-    open_key.append(Helper::Element_to_HEX(x5_w)+"\n");
+    open_key.append(Helper::Element_to_BASE_58(x1_w)+"\n");
+    open_key.append(Helper::Element_to_BASE_58(x2_w)+"\n");
+    open_key.append(Helper::Element_to_BASE_58(x3_w)+"\n");
+    open_key.append(Helper::Element_to_BASE_58(x4_w)+"\n");
+    open_key.append(Helper::Element_to_BASE_58(x5_w)+"\n");
     return open_key;
 }
 string Manager::MemberSecretToString(element_t ai,element_t bi,element_t ci)
 {
 	string member_secret;
-    member_secret.append(Helper::Element_to_HEX(ai)+"\n");
-    member_secret.append(Helper::Element_to_HEX(bi)+"\n");
-    member_secret.append(Helper::Element_to_HEX(ci)+"\n");
+    member_secret.append(Helper::Element_to_BASE_58(ai)+"\n");
+    member_secret.append(Helper::Element_to_BASE_58(bi)+"\n");
+    member_secret.append(Helper::Element_to_BASE_58(ci)+"\n");
     return member_secret;
 } 
 void Manager::RequestFromString(string request,string & hash_string, element_t Sk, element_t Pi1)
@@ -480,14 +480,14 @@ void Manager::RequestFromString(string request,string & hash_string, element_t S
 }
 void Manager::AddToRegistrationList(element_t Pi1, element_t Pi2)
 {
-    RegistrList.append(Helper::Element_to_HEX(Pi1)+"\n");
-    RegistrList.append(Helper::Element_to_HEX(Pi2)+"\n");
+    RegistrList.append(Helper::Element_to_BASE_58(Pi1)+"\n");
+    RegistrList.append(Helper::Element_to_BASE_58(Pi2)+"\n");
     RegistrList.append(Helper::int_to_HEX(member_count++)+end_point);
 }
 int Manager::SearchInRegistrationList(element_t Pi2)
 {
 	string tmp;
-	tmp=Helper::Element_to_HEX(Pi2);
+	tmp=Helper::Element_to_BASE_58(Pi2);
 	size_t found=RegistrList.find(tmp);
 	if(found==string::npos)
 		return -1;
