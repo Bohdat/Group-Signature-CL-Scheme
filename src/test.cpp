@@ -1,4 +1,4 @@
-//g++ *.cpp -l pbc -l gmp -I /pbc-0.5.14/include -o test
+//g++ *.cpp ./base58/*.cpp -l pbc -l gmp -I ../include -o test
 #include "GroupManagerAPI.h"
 #include "GroupMemberAPI.h"
 #include "GroupVerifierAPI.h"

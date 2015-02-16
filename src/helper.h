@@ -5,6 +5,7 @@
 #include <stdio.h>
 #include <string.h>
 #include "sha1.h"
+#include "./base58/base58.h"
 #define seporator "\n***"
 #define end_point "\n+++"
 #define _PAIRING_PARAM_ "type a\n\
@@ -29,5 +30,8 @@ public:
 	static void Hash_T1_T2_T3(element_t res,element_t T1,element_t T2,element_t T3);
     static void Hash_C(element_t res,element_t R1,element_t R2,element_t R3,element_t R4, element_t R5,element_t g,element_t gt,element_t X, element_t Y, element_t h,element_t y1, element_t y2, element_t y3,char* mes, int len_mes);
 	static string Hash_g_R(element_t g, element_t R);
+
+	static string Element_to_BASE_58(element_t elem);
+	static void Element_from_BASE_58(element_t elem,string elem_base58);
 };
 #endif

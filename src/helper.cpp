@@ -1,34 +1,54 @@
-#include "helper.h"
 #include <iomanip>
 #include <sstream>
+
+#include "helper.h"
+//HEX convertation
 string Helper::Element_to_HEX(element_t elem)
 {
-	int len;
-	unsigned char*buf;
-	len=element_length_in_bytes(elem);
- 	buf=new unsigned char[len];
- 	element_to_bytes(buf,elem);
+    int len;
+    unsigned char*buf;
+    len=element_length_in_bytes(elem);
+    buf=new unsigned char[len];
+    element_to_bytes(buf,elem);
     stringstream ss;
     for(int i(0);i<len;++i)
         ss << std::hex << std::setw(2) << std::setfill('0') << (int)buf[i];
-	delete[]buf;
+    delete[]buf;
     return ss.str();
 }
 void Helper::Element_from_HEX(element_t elem,string elem_hex)
 {
-	int len;
-	unsigned char*buf;
-	len=elem_hex.length()/2;
-	buf=new unsigned char[len];
-	for (std::string::size_type i = 0, i_end = elem_hex.size(); i < i_end; i += 2)
+    int len;
+    unsigned char*buf;
+    len=elem_hex.length()/2;
+    buf=new unsigned char[len];
+    for (std::string::size_type i = 0, i_end = elem_hex.size(); i < i_end; i += 2)
     {
         unsigned byte;
         std::istringstream hex_byte(elem_hex.substr(i, 2));
         hex_byte >> std::hex >> byte;
         buf[i/2] = static_cast<unsigned char>(byte);
     }
-	element_from_bytes(elem,buf);
-	delete[]buf;
+    element_from_bytes(elem,buf);
+    delete[]buf;
+}
+// BASE 58 convertation
+string Helper::Element_to_BASE_58(element_t elem)
+{
+    int len=element_length_in_bytes(elem);
+    unsigned char* buf=new unsigned char[len];
+    element_to_bytes(buf,elem);
+    string ret=EncodeBase58(buf, len);
+    delete[]buf;
+    return ret;
+}
+void Helper::Element_from_BASE_58(element_t elem,string elem_base58)
+{
+    int len=elem_base58.length();
+    unsigned char* buf=new unsigned char[len];
+    DecodeBase58(elem_base58, buf, len);
+    element_from_bytes(elem,buf);
+    delete[]buf;
 }
 void Helper::TakeNextElementFromString(string & str,element_t elem)
 {
